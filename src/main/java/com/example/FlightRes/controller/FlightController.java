@@ -31,6 +31,10 @@ public class FlightController {
     cardServices cardServices;
 
 
+    @GetMapping("/")
+    public String home() {
+        return "search";   // redirect to your search page
+    }
 
     @GetMapping("/flightSearch")
     private String SearchFlight(){
