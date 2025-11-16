@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Check-In Successful</title>
+
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+        padding: 30px;
+        text-align: center;
+    }
+
+    .card {
+        background: white;
+        border-radius: 14px;
+        padding: 25px;
+        max-width: 550px;
+        margin: 40px auto;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #1a73e8;
+        margin-bottom: 10px;
+    }
+
+    .message {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .row {
+        margin: 8px 0;
+    }
+
+    .label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #1a73e8;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        cursor: pointer;
+        margin-top: 20px;
+        font-size: 15px;
+    }
+
+    button:hover {
+        background-color: #0f5ecb;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="title">✅ Check-In Successful</div>
+
+  <p class="message">Your boarding details have been updated successfully.</p>
+
+  <div class="row">
+    <span class="label">Passenger:</span>
+    <span th:text="${passenger1.firstName + ' ' + passenger1.lastName}"></span>
+  </div>
+
+  <div class="row">
+    <span class="label">Flight:</span>
+    <span th:text="${flightDetails1.flightcode}"></span>
+  </div>
+
+  <div class="row">
+    <span class="label">From:</span>
+    <span th:text="${flightDetails1.source}"></span>
+
+    <span class="label" style="margin-left: 10px;">To:</span>
+    <span th:text="${flightDetails1.destination}"></span>
+  </div>
+
+  <div class="row">
+    <span class="label">Departure:</span>
+    <span th:text="${flightDetails1.departureDate}"></span>
+  </div>
+
+  <div class="row">
+    <span class="label">Bags Checked In:</span>
+    <span th:text="${passenger1.bags}"></span>
+  </div>
+
+  <button onclick="window.location.href='/reservation'">Back to Home</button>
+</div>
+
+</body>
+</html>

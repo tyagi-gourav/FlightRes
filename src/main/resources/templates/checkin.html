@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Reservation Details</title>
+
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+        padding: 20px;
+    }
+
+    .card {
+        background: white;
+        border-radius: 12px;
+        padding: 20px;
+        max-width: 600px;
+        margin: 20px auto;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .title {
+        font-size: 22px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .row {
+        margin: 8px 0;
+    }
+
+    .label {
+        font-weight: bold;
+        color: #555;
+    }
+
+    .checkin-box {
+        margin-top: 25px;
+        text-align: center;
+    }
+
+    input[type="number"] {
+        padding: 8px;
+        width: 200px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        margin-bottom: 15px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: #1a73e8;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0f5ecb;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Passenger Details -->
+<div class="card">
+  <div class="title">Passenger Details</div>
+
+  <div class="row">
+    <span class="label">Passenger ID:</span>
+    <span th:text="${passenger1.pid}"></span>
+  </div>
+
+  <div class="row">
+    <span class="label">Name:</span>
+    <span th:text="${passenger1.firstName + ' ' + passenger1.lastName}"></span>
+  </div>
+
+  <div class="row">
+    <span class="label">Email:</span>
+    <span th:text="${passenger1.email}"></span>
+  </div>
+
+  <div class="row">
+    <span class="label">Phone:</span>
+    <span th:text="${passenger1.number}"></span>
+  </div>
+</div>
+
+
+<!-- Flight Details -->
+<div class="card">
+  <div class="title">Flight Details</div>
+
+  <div class="row">
+    <span class="label">Flight ID:</span>
+    <span th:text="${flightDetails1.id}"></span>
+  </div>
+
+  <div class="row">
+    <span class="label">Airline:</span>
+    <span th:text="${flightDetails1.airline}"></span>
+  </div>
+
+  <div class="row">
+    <span class="label">From:</span>
+    <span th:text="${flightDetails1.source}"></span>
+  </div>
+
+  <div class="row">
+    <span class="label">To:</span>
+    <span th:text="${flightDetails1.destination}"></span>
+  </div>
+
+  <div class="row">
+    <span class="label">Flight Code:</span>
+    <span th:text="${flightDetails1.flightcode}"></span>
+  </div>
+
+  <div class="row">
+    <span class="label">Departure Date:</span>
+    <span th:text="${flightDetails1.departureDate}"></span>
+  </div>
+</div>
+
+
+<!-- Check-in Section -->
+<div class="card checkin-box">
+  <form th:action="@{/checkIn}" method="post">
+
+    <div>
+      <label class="label">Max Bags Allowed:</label><br>
+      <input type="number" name="bags" min="0" max="10" required>
+    </div>
+
+    <!-- Hidden passenger ID field -->
+    <input type="hidden" name="pid" th:value="${passenger1.pid}">
+
+    <button type="submit">Check In</button>
+  </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation Lookup</title>
+</head>
+<body>
+
+<h2>Find Your Reservation</h2>
+
+<form th:action="@{/reservationDetails}" method="get">
+    <label for="reservationId">Enter Reservation ID:</label>
+    <input type="text" id="reservationId" name="reservationId" required>
+
+    <button type="submit">Check Reservation</button>
+</form>
+
+</body>
+</html>

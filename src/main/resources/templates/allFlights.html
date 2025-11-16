@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Flights</title>
+</head>
+
+<body>
+<h2 style="text-align:center;">Available Flights</h2>
+
+<table border="1" cellpadding="10" cellspacing="0" style="margin:auto; width:80%;">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Source</th>
+        <th>Destination</th>
+        <th>Airline</th>
+        <th>Flight Code</th>
+        <th>Date</th>
+        <th>Select</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="flight : ${flights}">
+        <td th:text="${flight.id}"></td>
+        <td th:text="${flight.source}"></td>
+        <td th:text="${flight.destination}"></td>
+        <td th:text="${flight.airline}"></td>
+        <td th:text="${flight.flightcode}"></td>
+        <td th:text="${flight.departureDate}"></td>
+
+        <td>
+            <form th:action="@{/selectFlight}" method="post">
+                <input type="hidden" name="id" th:value="${flight.id}">
+                <button type="submit">Select</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
